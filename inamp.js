@@ -2,56 +2,52 @@ var mainWindow = document.createElement('div');
 mainWindow.id = 'inamp';
 document.body.appendChild(mainWindow);
 
-var styleElement = document.createElement('style');
-mainWindow.appendChild(styleElement);
+mainWindow.innerHTML = `
+	<div id="inamp-mainPart">
+		<div id="inamp-mainPart-frame">
+			<div id="inamp-mainPart-frame-inner">
+				<div id="inamp-title">
+					<div id="inamp-menu-button"></div>
+					<div class="inamp-title-decoration" id="inamp-title-decoration-left"></div>
+					<div class="inamp-title-decoration" id="inamp-title-decoration-right"></div>
+					<div id="inamp-top-button-1"></div>
+					<div id="inamp-top-button-2"></div>
+					<div id="inamp-top-button-3"></div>
+				</div>
+				<div id="inamp-mainPanel">
+					<div id="inamp-display"></div>
+					<div id="inamp-ticker"></div>
+					<div id="inamp-bitrate"></div>
+					<div id="inamp-frequency"></div>
+					<div id="inamp-trackControl"></div>
+					
+					<button id="inamp-previousButton" class="inamp-button">&#x23ea;</button>
+					<button id="inamp-playButton" class="inamp-button">&#x23f4;</button>
+					<button id="inamp-pauseButton" class="inamp-button">&#x23f8;</button>
+					<button id="inamp-stopButton" class="inamp-button">&#x23f9;</button>
+					<button id="inamp-nextButton" class="inamp-button">&#x23e9;</button>
+					<button id="inamp-ejectButton" class="inamp-button">&#x23f6;</button>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+	<style id="inamp-styles"></style>
+`;
 
-var panel = document.createElement('div');
-panel.id = 'inamp-mainPanel';
-mainWindow.appendChild(panel);
+var styleElement = document.getElementById('inamp-styles');
+var panel = document.getElementById('inamp-mainPanel');
+var display = document.getElementById('inamp-display');
+var ticker = document.getElementById('inamp-ticker');
+var bitrate = document.getElementById('inamp-bitrate');
+var frequency = document.getElementById('inamp-frequency');
 
-var display = document.createElement('div');
-display.id = 'inamp-display';
-panel.appendChild(display);
-
-var trackControl = document.createElement('div');
-trackControl.id = 'inamp-trackControl';
-panel.appendChild(trackControl);
-
-var previousButton = document.createElement('button');
-previousButton.id = 'inamp-previousButton';
-previousButton.classList.add('inamp-button');
-previousButton.innerHTML = '&#x23ea;';
-panel.appendChild(previousButton);
-
-var playButton = document.createElement('button');
-playButton.id = 'inamp-playButton';
-playButton.classList.add('inamp-button');
-playButton.innerHTML = '&#x23f4;';
-panel.appendChild(playButton);
-
-var pauseButton = document.createElement('button');
-pauseButton.id = 'inamp-pauseButton';
-pauseButton.classList.add('inamp-button');
-pauseButton.innerHTML = '&#x23f8;';
-panel.appendChild(pauseButton);
-
-var stopButton = document.createElement('button');
-stopButton.id = 'inamp-stopButton';
-stopButton.classList.add('inamp-button');
-stopButton.innerHTML = '&#x23f9;';
-panel.appendChild(stopButton);
-
-var nextButton = document.createElement('button');
-nextButton.id = 'inamp-nextButton';
-nextButton.classList.add('inamp-button');
-nextButton.innerHTML = '&#x23e9;';
-panel.appendChild(nextButton);
-
-var ejectButton = document.createElement('button');
-ejectButton.id = 'inamp-ejectButton';
-ejectButton.classList.add('inamp-button');
-ejectButton.innerHTML = '&#x23f6;';
-panel.appendChild(ejectButton);
+var previousButton = document.getElementById('inamp-previousButton');
+var playButton = document.getElementById('inamp-playButton');
+var pauseButton = document.getElementById('inamp-pauseButton');
+var stopButton = document.getElementById('inamp-stopButton');
+var nextButton = document.getElementById('inamp-nextButton');
+var ejectButton = document.getElementById('inamp-ejectButton');
 
 
 var context = new AudioContext() || new webkitAudioContext();
@@ -109,9 +105,7 @@ document.getElementById('inamp-pauseButton').addEventListener('click', function(
 });
 
 document.getElementById('inamp-stopButton').addEventListener('click', function() {
-	try {
-		bufferSource.stop();
-	} catch (e) {};
+	bufferSource.stop();
 });
 
 
@@ -127,10 +121,88 @@ styleElement.innerHTML = `
 		position: fixed;
 		right: 2px;
 		bottom: 2px;
-		width: 277px;
+	}
+	
+	#inamp-mainPart {
+		width: 275px;
 		height: 116px;
 		border: 1px solid #1c1c27;
 		background-color: #1a1922;
+	}
+	
+	#inamp-mainPart-frame {
+		width: 100%;
+		height: 100%;
+		border: 1px solid #5c5c63;
+		border-right: none;
+		border-bottom: none;
+	}
+	
+	#inamp-mainPart-frame-inner {
+		width: 100%;
+		height: 100%;
+		position: relative;
+	}
+	
+	#inamp-title {
+		position: absolute;
+		left: 0;
+		top: 0;
+		width: 100%;
+		height: 12px;
+		background: linear-gradient(to right, #1b1b22 0%, #383854 50%, #2c2b40 100%);
+	}
+	
+	#inamp-menu-button {
+		position: absolute;
+		left: 4px;
+		top: 2px;
+		width: 9px;
+		height: 7px;
+		background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAkAAAAHCAYAAADam2dgAAAAVklEQVQY02NggILpDTb/GfCBdbMj/+tpqPzHpZBp3ezI/w29pxm+/WHGaQgLAwMDg44mNwOytWdv/oPzjdWZMHVNb7D5r6KijmI9Ey4rMiMk8PoDw6cAvqYfnW0ZYesAAAAASUVORK5CYII=');
+	}
+	
+	.inamp-title-decoration {
+		position: absolute;
+		top: 2px;
+		height: 7px;
+		background-color: #817650;
+		background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAAHCAYAAADJTCeUAAAAK0lEQVQI12NQUVH/zxQbpMnAxCdpz8BgZmzwn0lLXYKBSVGGg4FBXUPrPwBzhAZzg9MmVgAAAABJRU5ErkJggg==');
+		background-repeat: repeat-x;
+	}
+	
+	#inamp-title-decoration-left {
+		left: 19px;
+		width: 91px;
+	}
+	
+	#inamp-title-decoration-right {
+		left: 161px;
+		width: 78px;
+	}
+	
+	#inamp-top-button-1,
+	#inamp-top-button-2,
+	#inamp-top-button-3 {
+		position: absolute;
+		top: 2px;
+		width: 7px;
+		height: 7px;
+	}
+	
+	#inamp-top-button-1 {
+		right: 22px;
+		background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAcAAAAHCAYAAADEUlfTAAAAgElEQVQI12XNsQrCMBSF4f9CaBJaSGiXoEHI5OjuEzk5+QAOrj6ji4OLgyBqO3jdlNqzfodzBKCkTvnL6XIVKanTyk+M4SmYyish2gne6DEhWmrnaax84d4rRDDz2ZIQHCW739/5xfB+YBarNSm3o8mcGwAEYLc/qmvrUeGw3cgHdaMaULjhTuoAAAAASUVORK5CYII=');
+	}
+	
+	#inamp-top-button-2 {
+		right: 12px;
+		background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAcAAAAHCAYAAADEUlfTAAAAYklEQVQI12NkYGBgqJk04/+Pd18ZOIS4GWB0S14GI2PNpBn/+ZkYMMDLN18ZGM0MJf8z4ABMDHgAfsmnr7DLP3z9m4GRgYGBQVFC+P8vZg4GBgYGhj+MPxlY/rMzPH36lBEAvpYdogedra8AAAAASUVORK5CYII=');
+	}
+	
+	#inamp-top-button-3 {
+		right: 2px;
+		background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAcAAAAHCAYAAADEUlfTAAAAl0lEQVQI102OrwvCQACFv5MJImgxHBcHhgUdzLAoWlZMNhGW97+uHGwLa2seF8QwEH9Mznbs1e/xvUeRZy5NlGOUNFGuyDMX9N8XcRQC+EIcheimRgCcTwe3Wn6wxiKVpGo7Sm1EAPB83xjMD6kk1livnwA87r0Hx93aQ3G97N1cDFRtx3izajuCxXSGbmpKbcTosEs2W/6uQjeekkkBrQAAAABJRU5ErkJggg==');
 	}
 	
 	#inamp-mainPanel {
@@ -144,6 +216,7 @@ styleElement.innerHTML = `
 		background: linear-gradient(to right, #1c1c25 0%, #3a3a58 50%, #2d2d41 100%);
 	}
 	
+	
 	#inamp-display {
 		position: absolute;
 		left: 5px;
@@ -154,6 +227,45 @@ styleElement.innerHTML = `
 		border-right: 1px solid #6f6f81;
 		border-bottom: 1px solid #6d6d7d;
 		background-color: #000;
+	}
+	
+	#inamp-ticker {
+		position: absolute;
+		left: 103px;
+		top: 10px;
+		width: 159px;
+		height: 14px;
+		background-color: #000;
+		border-top: 1px solid #272737;
+		border-left: 1px solid #272737;
+		border-right: 1px solid #707084;
+		border-bottom: 1px solid #707084;
+	}
+	
+	#inamp-bitrate {
+		position: absolute;
+		left: 103px;
+		top: 27px;
+		width: 20px;
+		height: 12px;
+		background-color: #000;
+		border-top: 1px solid #272737;
+		border-left: 1px solid #272737;
+		border-right: 1px solid #707084;
+		border-bottom: 1px solid #707084;
+	}
+	
+	#inamp-frequency {
+		position: absolute;
+		left: 148px;
+		top: 27px;
+		width: 15px;
+		height: 12px;
+		background-color: #000;
+		border-top: 1px solid #272737;
+		border-left: 1px solid #272737;
+		border-right: 1px solid #707084;
+		border-bottom: 1px solid #707084;
 	}
 	
 	.inamp-button {
