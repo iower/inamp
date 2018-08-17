@@ -181,6 +181,30 @@ styleElement.innerHTML = `
 		width: 78px;
 	}
 	
+	#inamp-title-decoration-left::before,
+	#inamp-title-decoration-right::before {
+		display: table;
+		content: '';
+		position: absolute;
+		left: -2px;
+		top: 0;
+		width: 2px;
+		height: 7px;
+		background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAIAAAAHCAYAAAAie5yXAAAAP0lEQVQI12NgYGBgUFFR/8+ooqL+38ZMkYGJgYGBQd/UnYFRRUX9vxA/J0RES10Cwnj28jsDAwMDA4O6htZ/AC6tCmKOtW66AAAAAElFTkSuQmCC');
+	}
+	
+	#inamp-title-decoration-left::after,
+	#inamp-title-decoration-right::after {
+		display: table;
+		content: '';
+		position: absolute;
+		right: -2px;
+		top: 0;
+		width: 2px;
+		height: 7px;
+		background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAIAAAAHCAYAAAAie5yXAAAAPklEQVQI1zXLsQpAUBQA0OPlO5R6UUoGvMnu/39C2ZhMuiZnP3LuA+qttBBpWndQzcsQ9/VKY9eAdJwP8K8PiCgMyrr3AzMAAAAASUVORK5CYII=');
+	}
+	
 	#inamp-top-button-1,
 	#inamp-top-button-2,
 	#inamp-top-button-3 {
@@ -227,6 +251,8 @@ styleElement.innerHTML = `
 		border-right: 1px solid #6f6f81;
 		border-bottom: 1px solid #6d6d7d;
 		background-color: #000;
+		background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAIAAAACCAYAAABytg0kAAAAD0lEQVQI12OQk9P9z4AMABSFAWk1/ErCAAAAAElFTkSuQmCC');
+		background-repeat: repeat;
 	}
 	
 	#inamp-ticker {
@@ -255,6 +281,17 @@ styleElement.innerHTML = `
 		border-bottom: 1px solid #707084;
 	}
 	
+	#inamp-bitrate::after {
+		display: table;
+		content: '';
+		position: absolute;
+		top: 2px;
+		left: 22px;
+		width: 15px;
+		height: 7px;
+		background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA8AAAAHCAYAAADXhRcnAAAAPklEQVQY06WQQQoAIAgEXf//5+lSIKJFNRcdFRQNwALZd7h94NVGJkevGjnv4tPZkgTgUfJZkhRry2+e2g4PLrZbvXdgOtQAAAAASUVORK5CYII=');
+	}
+	
 	#inamp-frequency {
 		position: absolute;
 		left: 148px;
@@ -266,6 +303,17 @@ styleElement.innerHTML = `
 		border-left: 1px solid #272737;
 		border-right: 1px solid #707084;
 		border-bottom: 1px solid #707084;
+	}
+	
+	#inamp-frequency::after {
+		display: table;
+		content: '';
+		position: absolute;
+		top: 2px;
+		left: 17px;
+		width: 13px;
+		height: 6px;
+		background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA0AAAAGCAYAAAAYLBS/AAAAP0lEQVQY05WQ0QoAMAgCM/b/v+xeEqQ12HyU84KCJOMz2QuX3ITLAQCYoD6GCg0OwEQS52RGpV9Tl4JeHsLKBnzDL/xppXwjAAAAAElFTkSuQmCC');
 	}
 	
 	.inamp-button {
