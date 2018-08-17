@@ -5,15 +5,15 @@ document.body.appendChild(mainWindow);
 mainWindow.innerHTML = `
 	<div id="inamp-mainPart">
 		<div id="inamp-mainPart-frame">
+			<div id="inamp-title">
+				<div id="inamp-menu-button"></div>
+				<div class="inamp-title-decoration" id="inamp-title-decoration-left"></div>
+				<div class="inamp-title-decoration" id="inamp-title-decoration-right"></div>
+				<div id="inamp-top-button-1"></div>
+				<div id="inamp-top-button-2"></div>
+				<div id="inamp-top-button-3"></div>
+			</div>
 			<div id="inamp-mainPart-frame-inner">
-				<div id="inamp-title">
-					<div id="inamp-menu-button"></div>
-					<div class="inamp-title-decoration" id="inamp-title-decoration-left"></div>
-					<div class="inamp-title-decoration" id="inamp-title-decoration-right"></div>
-					<div id="inamp-top-button-1"></div>
-					<div id="inamp-top-button-2"></div>
-					<div id="inamp-top-button-3"></div>
-				</div>
 				<div id="inamp-mainPanel">
 					<div id="inamp-display"></div>
 					<div id="inamp-ticker"></div>
@@ -36,6 +36,10 @@ mainWindow.innerHTML = `
 					<button id="inamp-stopButton" class="inamp-button">&#x23f9;</button>
 					<button id="inamp-nextButton" class="inamp-button">&#x23e9;</button>
 					<button id="inamp-ejectButton" class="inamp-button">&#x23f6;</button>
+					
+					<button id="inamp-shuffleButton" class="inamp-button"></button>
+					<button id="inamp-repeatButton" class="inamp-button"></button>
+					
 				</div>
 			</div>
 		</div>
@@ -140,17 +144,23 @@ styleElement.innerHTML = `
 	}
 	
 	#inamp-mainPart-frame {
-		width: 100%;
 		height: 100%;
-		border: 1px solid #5c5c63;
-		border-right: none;
-		border-bottom: none;
+		border-left: 1px solid #5c5c63;
+		border-top: 1px solid #5c5c63;
+		background: linear-gradient(to right, #1b1b24 0%, #3c3c59 50%, #2c2b40 100%);
+		position: relative;
 	}
 	
+	
 	#inamp-mainPart-frame-inner {
-		width: 100%;
-		height: 100%;
-		position: relative;
+		position: absolute;
+		left: 2px;
+		top: 0;
+		width: 268px;
+		height: 111px;
+		border-right: 1px solid #62626c;
+		border-bottom: 1px solid #62626c;
+		background: linear-gradient(to right, #16161d 0%, #2a2a3c 50%, #22222e 100%);
 	}
 	
 	#inamp-title {
@@ -158,8 +168,9 @@ styleElement.innerHTML = `
 		left: 0;
 		top: 0;
 		width: 100%;
-		height: 12px;
+		height: 10px;
 		background: linear-gradient(to right, #1b1b22 0%, #383854 50%, #2c2b40 100%);
+		z-index: 1;
 	}
 	
 	#inamp-menu-button {
@@ -240,8 +251,8 @@ styleElement.innerHTML = `
 	
 	#inamp-mainPanel {
 		position: absolute;
-		left: 7px;
-		top: 15px;
+		left: 2px;
+		top: 12px;
 		width: 263px;
 		height: 96px;
 		border-left: 1px solid #5c5c63;
@@ -252,8 +263,8 @@ styleElement.innerHTML = `
 	
 	#inamp-display {
 		position: absolute;
-		left: 5px;
-		top: 8px;
+		left: 4px;
+		top: 7px;
 		width: 93px;
 		height: 43px;
 		border-top: 1px solid #1f1f2a;
@@ -266,8 +277,8 @@ styleElement.innerHTML = `
 	
 	#inamp-ticker {
 		position: absolute;
-		left: 103px;
-		top: 10px;
+		left: 101px;
+		top: 8px;
 		width: 159px;
 		height: 14px;
 		background-color: #000;
@@ -279,7 +290,7 @@ styleElement.innerHTML = `
 	
 	#inamp-bitrate {
 		position: absolute;
-		left: 103px;
+		left: 101px;
 		top: 27px;
 		width: 20px;
 		height: 12px;
@@ -303,7 +314,7 @@ styleElement.innerHTML = `
 	
 	#inamp-frequency {
 		position: absolute;
-		left: 148px;
+		left: 146px;
 		top: 27px;
 		width: 15px;
 		height: 12px;
@@ -338,13 +349,13 @@ styleElement.innerHTML = `
 	}
 	
 	#inamp-volume-control {
-		left: 106px;
+		left: 103px;
 		width: 60px;
 		background-color: #559126;
 	}
 	
 	#inamp-balance-control {
-		left: 171px;
+		left: 170px;
 		width: 38px;
 		background-color: #cbd945;
 	}
@@ -383,41 +394,61 @@ styleElement.innerHTML = `
 	}
 	
 	#inamp-previousButton {
-		left: 11px;
-		top: 75px;
+		left: 9px;
+		top: 73px;
 	}
 	
 	#inamp-playButton {
-		left: 34px;
-		top: 75px;
+		left: 32px;
+		top: 73px;
 	}
 	
 	#inamp-pauseButton {
-		left: 57px;
-		top: 75px;
+		left: 55px;
+		top: 73px;
 	}
 	
 	#inamp-stopButton {
-		left: 80px;
-		top: 75px;
+		left: 78px;
+		top: 73px;
 	}
 	
 	#inamp-nextButton {
-		left: 103px;
-		top: 75px;
+		left: 101px;
+		top: 73px;
 	}
 	
 	#inamp-ejectButton {
-		left: 131px;
-		top: 76px;
+		left: 129px;
+		top: 74px;
 		width: 22px;
 		height: 15px;
+	}
+	
+	#inamp-shuffleButton {
+		left: 158px;
+		top: 75px;
+		width: 45px;
+		height: 13px;
+		background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB0AAAAFCAYAAAC5Fuf5AAAAVklEQVQoz2MwtfL9D8MMDAwMMBqZjUsMXR8uc9DlWRgYGBhOH9vMyEAGQNdHyByYPAuyq2CC6K7EBXDpw2U5TJ4Fm0XEWk62T4nx1eljmxkJ+YKUkAAARslSkOsHIkUAAAAASUVORK5CYII=');
+		background-position: center center;
+		background-repeat: no-repeat;
+	}
+	
+	#inamp-repeatButton {
+		left: 204px;
+		top: 75px;
+		width: 27px;
+		height: 13px;
+		background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAkAAAAFCAYAAACXU8ZrAAAAPUlEQVQI12NkYGBgCIjK+v/0wWMGbOD0sc2MDB2TF/9nwANMrXz/M5pa+f5H0YVFERM+BTDAAlOAbCK6mwASkBnGWdf1KQAAAABJRU5ErkJggg==');
+		background-position: center center;
+		background-repeat: no-repeat;
 	}
 	
 	#inamp-trackControl {
 		position: absolute;
 		top: 59px;
-		left: 11px;
+		left: 9px;
 		width: 249px;
 		height: 10px;
 		border-left: 2px solid #252434;
