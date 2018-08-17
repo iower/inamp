@@ -19,6 +19,15 @@ mainWindow.innerHTML = `
 					<div id="inamp-ticker"></div>
 					<div id="inamp-bitrate"></div>
 					<div id="inamp-frequency"></div>
+					
+					<div id="inamp-volume-control">
+						<div id="inamp-volume-control-slider"></div>
+					</div>
+					
+					<div id="inamp-balance-control">
+						<div id="inamp-balance-control-slider"></div>
+					</div>
+					
 					<div id="inamp-trackControl"></div>
 					
 					<button id="inamp-previousButton" class="inamp-button">&#x23ea;</button>
@@ -314,6 +323,48 @@ styleElement.innerHTML = `
 		width: 13px;
 		height: 6px;
 		background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA0AAAAGCAYAAAAYLBS/AAAAP0lEQVQY05WQ0QoAMAgCM/b/v+xeEqQ12HyU84KCJOMz2QuX3ITLAQCYoD6GCg0OwEQS52RGpV9Tl4JeHsLKBnzDL/xppXwjAAAAAElFTkSuQmCC');
+	}
+	
+	#inamp-volume-control,
+	#inamp-balance-control {
+		position: absolute;
+		top: 45px;
+		height: 6px;
+		border-radius: 4px;
+		border-left: 1px solid #1e1e29;
+		border-top: 1px solid #1e1e29;
+		border-right: 1px solid #7e7e92;
+		border-bottom: 1px solid #7e7e92;
+	}
+	
+	#inamp-volume-control {
+		left: 106px;
+		width: 60px;
+		background-color: #559126;
+	}
+	
+	#inamp-balance-control {
+		left: 171px;
+		width: 38px;
+		background-color: #cbd945;
+	}
+	
+	#inamp-volume-control-slider,
+	#inamp-balance-control-slider {
+		position: absolute;
+		top: -3px;
+		width: 14px;
+		height: 11px;
+		background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA4AAAALCAYAAABPhbxiAAAAdklEQVQoz2NkYGBgEBGT+c9AAnjz6gkjo4iYzP+TF86Soo/B3MCYgeXNqycMDAwMDJev3iSo4eyJCwyXr99gePPqCQMTumRKdBRWGh0wMZAJ6K+RkYGB4f/dZy9JCpwjezYxsCALkgJYRMRkGIpLGslyKlkpBwAR1C3d9Dy5EwAAAABJRU5ErkJggg==');
+	}
+	
+	#inamp-volume-control-slider {
+		right: -2px;
+	}
+	
+	#inamp-balance-control-slider {
+		left: 50%;
+		margin-left: -7px;
 	}
 	
 	.inamp-button {
