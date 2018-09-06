@@ -28,6 +28,13 @@ mainWindow.innerHTML = `
 						<div id="inamp-balance-control-slider"></div>
 					</div>
 					
+					<button id="inamp-eqButton" class="inamp-button">
+						<div class="led"></div>
+					</button>
+					<button id="inamp-plButton" class="inamp-button">
+						<div class="led"></div>
+					</button>
+					
 					<div id="inamp-trackControl"></div>
 					
 					<button id="inamp-previousButton" class="inamp-button">&#x23ea;</button>
@@ -376,6 +383,56 @@ styleElement.innerHTML = `
 	#inamp-balance-control-slider {
 		left: 50%;
 		margin-left: -7px;
+	}
+	
+	#inamp-eqButton {
+		left: 212px;
+		top: 43px;
+		width: 22px;
+		height: 11px;
+	}
+	
+	#inamp-eqButton::before {
+		display: block;
+		content: '';
+		position: absolute;
+		left: 9px;
+		top: 2px;
+		width: 8px;
+		height: 5px;
+		background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAgAAAAFCAYAAAB4ka1VAAAABmJLR0QA/wD/AP+gvaeTAAAACXBIWXMAAA7DAAAOwwHHb6hkAAAAB3RJTUUH4gkGBBIIzgV9uQAAAEtJREFUCNdjOHj2KoOple9/Uyvf/wfPXmVA5zMgS8AkkdlMDAwMDCW5Ff9Lciv+M2ABLAwMDAw9kzsY0SVKciv+90zuYGTA5QYYDQABRjxv6vLrWgAAAABJRU5ErkJggg==');
+	}
+	
+	#inamp-plButton {
+		left: 235px;
+		top: 43px;
+		width: 22px;
+		height: 11px;
+	}
+	
+	#inamp-plButton::before {
+		display: block;
+		content: '';
+		position: absolute;
+		left: 9px;
+		top: 2px;
+		width: 7px;
+		height: 5px;
+		background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAcAAAAFCAYAAACJmvbYAAAABmJLR0QA/wD/AP+gvaeTAAAACXBIWXMAAA7DAAAOwwHHb6hkAAAAB3RJTUUH4gkGBBMTXXuFFAAAADhJREFUCNdjMLXy/Q/DB89eZYDRB89eZWBiYGBg6JncwciABTAxMDAwlORW/McmyYJPJws2QZhJAPmWFiKlzJcmAAAAAElFTkSuQmCC');
+	}
+	
+	#inamp-eqButton .led,
+	#inamp-plButton .led {
+		position: absolute;
+		left: 3px;
+		top: 2px;
+		width: 4px;
+		height: 4px;
+		border-top: 1px solid #505a6a;
+		border-left: 1px solid #505a6a;
+		border-right: 1px solid #d7ddf1;
+		border-bottom: 1px solid #d7ddf1;
+		background-color: #4a4e46;
 	}
 	
 	.inamp-button {
